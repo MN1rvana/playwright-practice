@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mini Shop</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>Mini Shop</h1>
+      <a class="cart-link" href="#cart">Cart <span class="badge" data-testid="cart-count">0</span></a>
+    </header>
+
+    <main class="layout">
+      <!-- SHOP -->
+      <section id="shop" aria-labelledby="shop-title">
+        <h2 id="shop-title">Products</h2>
+        <label class="search">
+          Search products
+          <input type="search" id="search" placeholder="e.g. mug" />
+        </label>
+        <p id="products-status" role="status">Loading products…</p>
+        <ul id="product-list" class="product-list"></ul>
+      </section>
+
+      <!-- CART -->
+      <aside id="cart" aria-labelledby="cart-title">
+        <h2 id="cart-title">Your cart</h2>
+        <p id="cart-empty">Your cart is empty</p>
+        <ul id="cart-list" class="cart-list"></ul>
+        <p class="total">Total: <strong data-testid="cart-total">0,00 zł</strong></p>
+        <button id="go-to-checkout" type="button" disabled>Go to checkout</button>
+      </aside>
+
+      <!-- CHECKOUT -->
+      <section id="checkout" aria-labelledby="checkout-title" hidden>
+        <h2 id="checkout-title">Checkout</h2>
+        <form id="checkout-form" novalidate>
+          <div class="field">
+            <label for="name">Full name</label>
+            <input id="name" name="name" autocomplete="name" aria-describedby="name-error" />
+            <p class="error" id="name-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-error" />
+            <p class="error" id="email-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone (optional)</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" />
+          </div>
+
+          <fieldset class="field">
+            <legend>Delivery</legend>
+            <label><input type="radio" name="delivery" value="locker" checked /> InPost parcel locker</label>
+            <label><input type="radio" name="delivery" value="courier" /> Courier</label>
+          </fieldset>
+
+          <div class="field" id="locker-fields">
+            <label for="locker">Locker code</label>
+            <input id="locker" name="locker" aria-describedby="locker-error" />
+            <p class="error" id="locker-error"></p>
+          </div>
+
+          <div id="courier-fields" hidden>
+            <div class="field">
+              <label for="street">Street address</label>
+              <input id="street" name="street" autocomplete="street-address" aria-describedby="street-error" />
+              <p class="error" id="street-error"></p>
+            </div>
+            <div class="field">
+              <label for="postal">Postal code</label>
+              <input id="postal" name="postal" autocomplete="postal-code" aria-describedby="postal-error" />
+              <p class="error" id="postal-error"></p>
+            </div>
+            <div class="field">
+              <label for="city">City</label>
+              <input id="city" name="city" autocomplete="address-level2" aria-describedby="city-error" />
+              <p class="error" id="city-error"></p>
+            </div>
+          </div>
+
+          <p id="order-error" class="form-error" role="alert"></p>
+          <div class="actions">
+            <button type="button" id="back-to-cart" class="secondary">Back to cart</button>
+            <button type="submit" id="place-order">Place order</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- CONFIRMATION -->
+      <section id="confirmation" aria-labelledby="confirmation-title" hidden>
+        <h2 id="confirmation-title">Thank you for your order</h2>
+        <p>Your order number is <strong data-testid="order-number"></strong></p>
+        <button type="button" id="continue-shopping">Continue shopping</button>
+      </section>
+    </main>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

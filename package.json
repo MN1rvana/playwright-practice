@@ -1,0 +1,17 @@
+{
+  "name": "playwright-practice",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "End-to-end tests with Playwright for a small shop app (cart, checkout, API mocking).",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.0"
+  }
+}
